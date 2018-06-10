@@ -48,8 +48,12 @@ public class PlotDrive
     this.directory = directory;
 
     plotFiles = new HashSet<>();
+	inProgress = '.plotting'
     for(Path path : plotFilePaths)
     {
+	  if path.toLowerCase().contains(inProgress.toLowerCase()) {
+		  continue;
+	  }
       PlotFile plotFile = new PlotFile(path, chunkPartNonces);
       plotFiles.add(plotFile);
 
